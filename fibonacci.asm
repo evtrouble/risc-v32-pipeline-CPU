@@ -33,7 +33,7 @@ main:
 	srli	x6, x6, 10
 	andi	x6, x6, 0x01F
     	addi	x7,x7,1
-   	addi	x8,x8,-1
+   	addi	x8,x0,-1
    	addi	x9,x0,0
 	jal	x5, fib
 	sw	x7, 4(x4)
