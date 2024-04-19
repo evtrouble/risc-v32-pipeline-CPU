@@ -119,7 +119,7 @@ module pipeline_CPU(
    initial begin
       //$readmemh("riscv32_sim1.dat", U_imem.RAM);
       pc <= 0;
-   end
+    end
    
     //frequency division
     reg[31:0]clkdiv;
@@ -134,8 +134,8 @@ module pipeline_CPU(
 
     //IF
   // imem U_imem( Clk_CPU, pc_IF, instr_IF);
-   wire[9:0] addr_temp=pc_IF[11:2];
-   imem U_mem(.a(addr_temp),.spo(instr_IF));
+    wire[9:0] addr_temp=pc_IF[11:2];
+    imem U_mem(.a(addr_temp),.spo(instr_IF));
 
     always @(posedge Clk_CPU)begin
         if(bubbling2_ID)instr_IF_ID <= `INSTR_SIZE'b0;  //Pause for 2 cycles
@@ -144,9 +144,9 @@ module pipeline_CPU(
         else instr_IF_ID <= instr_IF;       
         
         pc_IF_ID <= (bubbling_ID?pc_ID:pc_IF);
-   end
+    end
    
-     mux2 mux_pc_src(.CTRL(pcsrc_ID), .rs1(pc_IF+4), .rs2(pc_change), .rd(pc_change_IF));   //next instruction or new address
+    mux2 mux_pc_src(.CTRL(pcsrc_ID), .rs1(pc_IF+4), .rs2(pc_change), .rd(pc_change_IF));   //next instruction or new address
      
     //IF/ID
     always@(posedge Clk_CPU) 
@@ -170,11 +170,11 @@ module pipeline_CPU(
    assign pc_ID     = pc_IF_ID;
    assign pc_change = (jalr_ID?cmp_rd1_ID:pc_ID)+(immout_ID<<1);    //jal, jalr, branch
     
-    hazarddetection U_hazarddetection(.memtoreg_EX(memtoreg_EX), .regwrite(regwrite_EX), .bchange(bchange_ID), .rd_EX(rd_EX), 
+   hazarddetection U_hazarddetection(.memtoreg_EX(memtoreg_EX), .regwrite(regwrite_EX), .bchange(bchange_ID), .rd_EX(rd_EX), 
                                     .memtoreg_MEM(memtoreg_MEM), .rs1(rs1_ID), .rs2(rs2_ID), .bubbling(bubbling_ID), 
                                     .rd_MEM(rd_MEM), .bubbling2(bubbling2_ID)); //check hazard
 
-    regfile U_rf(.clk(Clk_CPU), .ra1(rs1_ID), .ra2(rs2_ID), .rd1(rd1_ID), .rd2(rd2_ID), .we3(regwrite_WB),
+   regfile U_rf(.clk(Clk_CPU), .ra1(rs1_ID), .ra2(rs2_ID), .rd1(rd1_ID), .rd2(rd2_ID), .we3(regwrite_WB),
             .wa3(rd_WB), .wd3(writedata_WB));
 
    forward U_forwardA_ID(.regwrite_MEM(regwrite_MEM), .rd_MEM(rd_MEM), .regwrite_WB(regwrite_WB),
