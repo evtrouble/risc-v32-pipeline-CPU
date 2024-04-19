@@ -64,12 +64,12 @@ module pipeline_CPU(
     wire[`ADDR_SIZE-1:0] pc_ID;
     wire[`ADDR_SIZE-1:0] pc_change;
     wire[6:0]            opcode_ID;           
-	wire[2:0]            funct3_ID;  
+    wire[2:0]            funct3_ID;  
     wire[`RFIDX_WIDTH-1:0]rs1_ID,   rs2_ID,   rd_ID;
-	wire[6:0]            funct7_ID;  
-	wire[`XLEN-1:0]      rd1_ID, rd2_ID;
+    wire[6:0]            funct7_ID;  
+    wire[`XLEN-1:0]      rd1_ID, rd2_ID;
 
-	wire[3:0]            aluctrl_ID;           // for the EX stage 
+    wire[3:0]            aluctrl_ID;           // for the EX stage 
     wire                 alusrc_ID;            
     wire[1:0]            alusrca_ID; 
     wire                 memwrite_ID, lunsigned_ID;
@@ -84,9 +84,9 @@ module pipeline_CPU(
 
     wire[11:0]          iimm_ID;                // for EXT module 
     wire[11:0]	      	simm_ID;
-	wire[11:0]          bimm_ID;
-	wire[19:0]	      	uimm_ID;
-	wire[19:0]          jimm_ID;
+    wire[11:0]          bimm_ID;
+    wire[19:0]	      	uimm_ID;
+    wire[19:0]          jimm_ID;
 
     wire                bubbling_ID, bubbling2_ID;      //pause signals
     wire[1:0]           forwardA_ID, forwardB_ID;
@@ -177,14 +177,14 @@ module pipeline_CPU(
     regfile U_rf(.clk(Clk_CPU), .ra1(rs1_ID), .ra2(rs2_ID), .rd1(rd1_ID), .rd2(rd2_ID), .we3(regwrite_WB),
             .wa3(rd_WB), .wd3(writedata_WB));
 
-    forward U_forwardA_ID(.regwrite_MEM(regwrite_MEM), .rd_MEM(rd_MEM), .regwrite_WB(regwrite_WB),
+   forward U_forwardA_ID(.regwrite_MEM(regwrite_MEM), .rd_MEM(rd_MEM), .regwrite_WB(regwrite_WB),
             .rd_WB(rd_WB), .rs(rs1_ID), .CTRL_forward(forwardA_ID));
-    forward U_forwardB_ID(.regwrite_MEM(regwrite_MEM), .rd_MEM(rd_MEM), .regwrite_WB(regwrite_WB),
+   forward U_forwardB_ID(.regwrite_MEM(regwrite_MEM), .rd_MEM(rd_MEM), .regwrite_WB(regwrite_WB),
              .rd_WB(rd_WB), .rs(rs2_ID), .CTRL_forward(forwardB_ID));
-    mux3 mux_cmp_rs1_src(.CTRL(forwardA_ID), .rs1(rd1_ID), .rs2(dmemaddr_MEM), .rs3(writedata_WB), .rd(cmp_rd1_ID));
-    mux3 mux_cmp_rs2_src(.CTRL(forwardB_ID), .rs1(rd2_ID), .rs2(dmemaddr_MEM), .rs3(writedata_WB), .rd(cmp_rd2_ID));
+   mux3 mux_cmp_rs1_src(.CTRL(forwardA_ID), .rs1(rd1_ID), .rs2(dmemaddr_MEM), .rs3(writedata_WB), .rd(cmp_rd1_ID));
+   mux3 mux_cmp_rs2_src(.CTRL(forwardB_ID), .rs1(rd2_ID), .rs2(dmemaddr_MEM), .rs3(writedata_WB), .rd(cmp_rd2_ID));
 
-    cmp U_cmp(.a(cmp_rd1_ID), .b(cmp_rd2_ID), .op_unsigned(bunsigned_ID), .zero(zero_ID), .lt(lt_ID));  //for conditional jump 
+   cmp U_cmp(.a(cmp_rd1_ID), .b(cmp_rd2_ID), .op_unsigned(bunsigned_ID), .zero(zero_ID), .lt(lt_ID));  //for conditional jump 
 
    controller  c(.clk(Clk_CPU), .reset(rstn), .opcode(opcode_ID), .funct3(funct3_ID), .funct7(funct7_ID),
                  .zero(zero_ID), .lt(lt_ID), .immctrl(immctrl_ID), .jal(jal_ID), .bchange(bchange_ID),
@@ -295,22 +295,23 @@ module pipeline_CPU(
     reg[`RFIDX_WIDTH-1:0]  reg_addr;
     reg[`DMEM_SIZE_WIDTH-1:0]   dmem_addr;
 
-    //display data
+    //choose data to display
     always @(*) begin
-            if (sw_i[1]) display_data<=pc;
-            else if (sw_i[2]) display_data<=instr_IF_ID;
-            else if (sw_i[3]) begin
-                reg_addr<=sw_i[9:5];
-                display_data<=U_rf.rf[reg_addr];
+	    if (sw_i[1]) display_data<=pc; //display pc
+	    else if (sw_i[2]) display_data<=instr_IF_ID; //display instruction
+	    else if (sw_i[3]) begin
+		    reg_addr<=sw_i[9:5];
+		    display_data<=U_rf.rf[reg_addr];//display register value
             end
            else if (sw_i[4]) begin
-               dmem_addr<=sw_i[13:7];
+		   dmem_addr<=sw_i[13:7];//display memory value
                display_data<={U_dmem.RAM[dmem_addr+3][7:0], U_dmem.RAM[dmem_addr+2][7:0], 
                     U_dmem.RAM[dmem_addr+1][7:0], U_dmem.RAM[dmem_addr][7:0]};
             end
             else display_data<=`XLEN'b0;
     end
 
+    //display data
     seg7x16 u_seg7x16(
         .clk(clk),
         .rstn(rstn),
