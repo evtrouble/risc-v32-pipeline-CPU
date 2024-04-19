@@ -24,27 +24,27 @@
 #		15		0x3db			31		0x213d05
 #################################################
 
-addi		x4,x0,0
-addi		x20,x0,0x7C
-sb		x20,1(x4)
+	addi	x4,x0,0
+	addi	x20,x0,0x7C
+	sb	x20,1(x4)
 
 main:
 	lw	x6, 0(x4)
 	srli	x6, x6, 10
 	andi	x6, x6, 0x01F
-    	addi	x7,x7,1
-   	addi	x8,x0,-1
-   	addi	x9,x0,0
+    	addi	x7, x7, 1
+   	addi	x8, x0, -1
+   	addi	x9, x0, 0
 	jal	x5, fib
 	sw	x7, 4(x4)
-   	jal	x0,return
+   	jal	x0, return
 
 fib:
-	addi	x8,x8,1
+	addi	x8, x8, 1
 	bge	x8, x6, ret
-    	add	x10,x7,x0
-    	add	x7,x7,x9
-   	add	x9,x10,x0
+    	add	x10, x7, x0
+    	add	x7, x7, x9
+   	add	x9, x10, x0
 	jal	fib
 ret:
 	jalr	x0, x5, 0
