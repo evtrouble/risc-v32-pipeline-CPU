@@ -1,0 +1,115 @@
+/*
+
+Xilinx Vivado v2018.3 (64-bit) [Major: 2018, Minor: 3]
+SW Build: 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build: 2404404 on Fri Dec  7 01:43:56 MST 2018
+
+Process ID (PID): 22976
+License: Customer
+
+Current time: 	Wed Apr 17 17:22:27 CST 2024
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 2560x1600
+Screen resolution (DPI): 144
+Available screens: 1
+Available disk space: 93 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=18
+
+Java version: 	9.0.4 64-bit
+Java home: 	D:/workApp/vivada/Vivado/2018.3/tps/win64/jre9.0.4
+Java executable location: 	D:/workApp/vivada/Vivado/2018.3/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	binzc
+User home directory: C:/Users/binzc
+User working directory: D:/bzcEdit/vivada/CPU/CPU
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: D:/workApp/vivada/Vivado
+HDI_APPROOT: D:/workApp/vivada/Vivado/2018.3
+RDI_DATADIR: D:/workApp/vivada/Vivado/2018.3/data
+RDI_BINDIR: D:/workApp/vivada/Vivado/2018.3/bin
+
+Vivado preferences file location: C:/Users/binzc/AppData/Roaming/Xilinx/Vivado/2018.3/vivado.xml
+Vivado preferences directory: C:/Users/binzc/AppData/Roaming/Xilinx/Vivado/2018.3/
+Vivado layouts directory: C:/Users/binzc/AppData/Roaming/Xilinx/Vivado/2018.3/layouts
+PlanAhead jar file location: 	D:/workApp/vivada/Vivado/2018.3/lib/classes/planAhead.jar
+Vivado log file location: 	D:/bzcEdit/vivada/CPU/CPU/vivado.log
+Vivado journal file location: 	D:/bzcEdit/vivada/CPU/CPU/vivado.jou
+Engine tmp dir: 	D:/bzcEdit/vivada/CPU/CPU/.Xil/Vivado-22976-lojsnve
+
+Xilinx Environment Variables
+----------------------------
+XILINX: D:/workApp/vivada/Vivado/2018.3/ids_lite/ISE
+XILINXD_LICENSE_FILE: D:\workApp\vivada
+XILINX_DSP: D:/workApp/vivada/Vivado/2018.3/ids_lite/ISE
+XILINX_PLANAHEAD: D:/workApp/vivada/Vivado/2018.3
+XILINX_SDK: D:/workApp/vivada/SDK/2018.3
+XILINX_VIVADO: D:/workApp/vivada/Vivado/2018.3
+XILINX_VIVADO_HLS: D:/workApp/vivada/Vivado/2018.3
+
+
+GUI allocated memory:	154 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 698 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 96 MB (+98527kb) [00:00:04]
+// [Engine Memory]: 625 MB (+504388kb) [00:00:04]
+// Opening Vivado Project: D:\bzcEdit\vivada\CPU\CPU\CPU.xpr. Version: Vivado v2018.3 
+// bx (cp):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project D:/bzcEdit/vivada/CPU/CPU/CPU.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 121 MB (+21129kb) [00:00:08]
+// [Engine Memory]: 769 MB (+117602kb) [00:00:08]
+// WARNING: HEventQueue.dispatchEvent() is taking  2308 ms.
+// Tcl Message: open_project D:/bzcEdit/vivada/CPU/CPU/CPU.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/workApp/vivada/Vivado/2018.3/data/ip'. 
+// [Engine Memory]: 815 MB (+8238kb) [00:00:09]
+// HMemoryUtils.trashcanNow. Engine heap size: 815 MB. GUI used memory: 64 MB. Current time: 4/17/24, 5:22:30 PM CST
+// Tcl Message: open_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 842.812 ; gain = 175.090 
+// Project name: CPU; location: D:/bzcEdit/vivada/CPU/CPU; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bx (cp)
+// [Engine Memory]: 886 MB (+31454kb) [00:00:12]
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 45 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u (Q, cp)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// A (cp): Out-of-Context module run(s) is/are Out-of-date: addNotify

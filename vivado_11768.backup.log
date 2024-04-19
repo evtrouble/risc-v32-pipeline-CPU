@@ -1,0 +1,58 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Apr 19 13:10:23 2024
+# Process ID: 11768
+# Current directory: D:/bzcEdit/vivada/CPU
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1476 D:\bzcEdit\vivada\CPU\CPU.xpr
+# Log file: D:/bzcEdit/vivada/CPU/vivado.log
+# Journal file: D:/bzcEdit/vivada/CPU\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/bzcEdit/vivada/CPU/CPU.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/Administrator/Desktop/CPU' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/workApp/vivada/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 834.242 ; gain = 170.449
+update_compile_order -fileset sources_1
+reset_run imem_synth_1
+launch_runs synth_1 -jobs 8
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'imem'...
+[Fri Apr 19 13:10:53 2024] Launched imem_synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/imem_synth_1/runme.log
+[Fri Apr 19 13:10:54 2024] Launched synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Fri Apr 19 13:11:54 2024] Launched synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Fri Apr 19 13:12:21 2024] Launched synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Fri Apr 19 13:13:41 2024] Launched impl_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/impl_1/runme.log
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+[Fri Apr 19 13:16:33 2024] Launched impl_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -jobs 8
+[Fri Apr 19 13:19:15 2024] Launched synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/synth_1/runme.log
+[Fri Apr 19 13:19:15 2024] Launched impl_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Fri Apr 19 13:22:21 2024] Launched synth_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Fri Apr 19 13:23:41 2024] Launched impl_1...
+Run output will be captured here: D:/bzcEdit/vivada/CPU/CPU.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 19 13:26:08 2024...
