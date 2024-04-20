@@ -23,6 +23,7 @@
 #		14		0x262			30		0x148add
 #		15		0x3db			31		0x213d05
 #################################################
+#	the instructions in instr.coe
 
 	addi	x4,x0,0
 	addi	x20,x0,0x7C
