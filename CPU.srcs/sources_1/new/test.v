@@ -46,7 +46,7 @@ initial begin
 end
 
 always begin
-	#(50) CLK = ~CLK;
+      #(50) CLK = ~CLK;
      
       if (CLK == 1'b1) 
       begin
@@ -60,7 +60,12 @@ always begin
 	 //$display("aluout: %d\twritedata_MEM: %d\n", myCPU.aluout_EX_MEM, myCPU.writedata_EX_MEM);
 	 //$display("readdata_MEM: %d\n", myCPU.readdata_MEM_WB);
       end
-      
+      if (myCPU.pc == 32'h80000078) // set to the address of the last instruction
+          begin
+            //$display("pc: %d\n", myCPU.pc);
+            //$finish;
+            $stop;
+          end
    end //end always
 
   reg[`XLEN-1:0] display_data;
