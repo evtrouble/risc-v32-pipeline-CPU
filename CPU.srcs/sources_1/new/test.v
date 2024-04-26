@@ -48,13 +48,17 @@ end
 always begin
 	#(50) CLK = ~CLK;
      
-	if (CLK == 1'b1) 
+      if (CLK == 1'b1) 
       begin
          counter = counter + 1;
          // comment these four lines for online judge
-         //$display("clock: %d", counter);
-	      //$display("pc:\t\t%h", myCPU.pcF);
-         //$display("instr:\t%h", myCPU.instr);
+         //$display("clock: %d", counter);   
+	 //$display("pc: %d\n", myCPU.pc);
+	 //$display("instr: %h", myCPU.instr_IF_ID);
+	 //$display("immout: %d\trd1_reg: %d\trd2_reg: %d\n", myCPU.immout_ID_EX, myCPU.rd1_ID_EX, myCPU.rd2_ID_EX);
+	 //$display("writedata_reg: %d\n", myCPU.writedata_WB);
+	 //$display("aluout: %d\twritedata_MEM: %d\n", myCPU.aluout_EX_MEM, myCPU.writedata_EX_MEM);
+	 //$display("readdata_MEM: %d\n", myCPU.readdata_MEM_WB);
       end
       
    end //end always
