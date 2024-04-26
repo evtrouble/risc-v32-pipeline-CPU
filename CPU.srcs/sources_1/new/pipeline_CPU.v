@@ -115,7 +115,6 @@ module pipeline_CPU(
     wire[`XLEN_WIDTH-1:0]rd_WB;
    
    initial begin
-      //$readmemh("riscv32_sim1.dat", U_imem.RAM);
       pc <= 0;
     end
    
@@ -156,8 +155,6 @@ module pipeline_CPU(
         else if(bubbling2_ID)begin pc<=pc_ID;end    //pause for 2 cycles
         else if(bubbling_ID)begin pc<=pc;end        //pause for 1 cycle
         else begin pc<=pc_change_IF;end
-
-        //$display("pc:%d\n", pc);
     end
     
     //ID
@@ -223,8 +220,6 @@ module pipeline_CPU(
         rs1_ID_EX       <= (pcsrc_ID?5'b0:rs1_ID);      //for forwarding
         rs2_ID_EX       <= rs2_ID;
         rd_ID_EX        <= rd_ID;
-       //$display("immout:%d rd1_reg:%d rd2_reg:%d\n", immout_ID_EX, rd1_ID_EX, rd2_ID_EX);
-       //$display("writedata_reg:%d\n", writedata_WB);
    end
    
     //EX
@@ -260,8 +255,6 @@ module pipeline_CPU(
         lunsigned_EX_MEM <= lunsigned_ID_EX;
         rd_EX_MEM        <= rd_EX;
         memwrite_EX_MEM  <= memwrite_ID_EX; //for store
-
-       //$display("aluout:%d writedata_MEM:%d\n", aluout_EX_MEM, writedata_EX_MEM);
    end
    
     //MEM
@@ -285,8 +278,6 @@ module pipeline_CPU(
         regwrite_MEM_WB  <= regwrite_MEM;
         memtoreg_MEM_WB  <= memtoreg_MEM;
         rd_MEM_WB        <= rd_MEM;
-
-        //$display("readdata_MEM:%d\n", readdata_MEM_WB);
    end
 
    //WB
