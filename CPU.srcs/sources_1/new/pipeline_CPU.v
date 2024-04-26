@@ -290,35 +290,5 @@ module pipeline_CPU(
    assign memtoreg_WB      = memtoreg_MEM_WB;
    assign rd_WB            = rd_MEM_WB;
    mux2 mux_MemtoReg(.CTRL(memtoreg_WB), .rs1(writedata_rs1_WB), .rs2(writedata_rs2_WB), .rd(writedata_WB));//from alu or mem
-   
-    reg[`XLEN-1:0] display_data;
-    reg[`RFIDX_WIDTH-1:0]  reg_addr;
-    reg[`DMEM_SIZE_WIDTH-1:0]   dmem_addr;
 
-    //choose data to display
-    always @(*) begin
-	    if (sw_i[1]) display_data<=pc; //display pc
-	    else if (sw_i[2]) display_data<=instr_IF_ID; //display instruction
-	    else if (sw_i[3]) begin
-		    reg_addr<=sw_i[9:5];
-		    display_data<=U_rf.rf[reg_addr];//display register value
-            end
-           else if (sw_i[4]) begin
-		   dmem_addr<=sw_i[13:7];//display memory value
-               display_data<={U_dmem.RAM[dmem_addr+3][7:0], U_dmem.RAM[dmem_addr+2][7:0], 
-                    U_dmem.RAM[dmem_addr+1][7:0], U_dmem.RAM[dmem_addr][7:0]};
-            end
-            else display_data<=`XLEN'b0;
-    end
-
-    //display data
-    seg7x16 u_seg7x16(
-        .clk(clk),
-        .rstn(rstn),
-        .disp_mode(1'b0),
-        .i_data(display_data),
-        .o_seg(disp_seg_o),
-        .o_sel(disp_an_o)
-        );
-   
 endmodule
