@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2024/03/29 10:18:09
+// Create Date: 2024/03/29 10:18:32
 // Design Name: 
 // Module Name: test
 // Project Name: 
@@ -74,6 +74,5 @@ end
         .o_seg(disp_seg_o),
         .o_sel(disp_an_o)
         );
-   
 
 endmodule
