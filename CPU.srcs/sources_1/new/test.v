@@ -30,8 +30,7 @@ module test(
 reg CLK;
 reg reset;
 
-  //pipeline_CPU myCPU(.clk(CLK), .rstn(reset), .sw_i(sw_i[15:0]),
-//                  .disp_an_o(disp_an_o), .disp_seg_o(disp_seg_o))
+  //pipeline_CPU myCPU(.clk(CLK), .rstn(reset), .sw_i(sw_i[15:0]))
   pipeline_CPU myCPU(.clk(clk), .rstn(rstn), .sw_i(sw_i[15:0]))
 
     reg[`XLEN-1:0] display_data;
@@ -47,9 +46,9 @@ reg reset;
 		    display_data<=myCPU.U_rf.rf[reg_addr];//display register value
             end
            else if (sw_i[4]) begin
-		   dmem_addr<=sw_i[13:7];//display memory value
+	       dmem_addr<=sw_i[13:7];//display memory value
                display_data<={myCPU.U_dmem.RAM[dmem_addr+3][7:0], myCPU.U_dmem.RAM[dmem_addr+2][7:0], 
-                    myCPU.U_dmem.RAM[dmem_addr+1][7:0], myCPU.U_dmem.RAM[dmem_addr][7:0]};
+               myCPU.U_dmem.RAM[dmem_addr+1][7:0], myCPU.U_dmem.RAM[dmem_addr][7:0]};
             end
             else display_data<=`XLEN'b0;
     end
