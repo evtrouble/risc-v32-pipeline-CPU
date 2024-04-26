@@ -21,12 +21,12 @@
 
 `include "defines.v"
 
-//module instr_imem(input clk, reset
+//module imem(input clk
 //            input  [`ADDR_SIZE-1:0]   a,
 //            output [`INSTR_SIZE-1:0]  rd);
 
 // reg  [`INSTR_SIZE-1:0] RAM[`IMEM_SIZE-1:0];
-//  //imem U_mem(.a(a[11:2]),.spo(rd));
+//
 // assign rd = RAM[a[11:2]]; // instruction size aligned
 //endmodule
 
