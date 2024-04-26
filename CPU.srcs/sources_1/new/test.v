@@ -30,6 +30,11 @@ module test(
 reg CLK;
 reg reset;
 
+always @(*) begin
+	CLK=~CLK;
+	#50
+end
+
   //pipeline_CPU myCPU(.clk(CLK), .rstn(reset), .sw_i(sw_i[15:0]))
   pipeline_CPU myCPU(.clk(clk), .rstn(rstn), .sw_i(sw_i[15:0]))
 
