@@ -33,37 +33,37 @@ reg CLK;
 reg reset;
 
 initial begin
-	CLK=0;
-	reset=0;
+	CLK<=0;
+	reset<=0;
 end
 	
 always @(*) begin
-	CLK=~CLK;
+	CLK<=~CLK;
 	#50
 end
 
   //pipeline_CPU myCPU(.clk(CLK), .rstn(reset), .sw_i(sw_i[15:0]))
-  pipeline_CPU myCPU(.clk(clk), .rstn(rstn), .sw_i(sw_i[15:0]))
+  pipeline_CPU myCPU(.clk(clk), .rstn(rstn), .sw_i(sw_i[15:0]));
 
-    reg[`XLEN-1:0] display_data;
-    reg[`RFIDX_WIDTH-1:0]  reg_addr;
-    reg[`DMEM_SIZE_WIDTH-1:0]   dmem_addr;
+  reg[`XLEN-1:0] display_data;
+  reg[`RFIDX_WIDTH-1:0]  reg_addr;
+  reg[`DMEM_SIZE_WIDTH-1:0]   dmem_addr;
 
-    //choose data to display
-    always @(*) begin
-	    if (sw_i[1]) display_data<=myCPU.pc; //display pc
+  //choose data to display
+  always @(*) begin
+      if (sw_i[1]) display_data<=myCPU.pc; //display pc
       else if (sw_i[2]) display_data<=myCPU.instr_IF_ID; //display instruction
-	    else if (sw_i[3]) begin
-		    reg_addr<=sw_i[9:5];
-		    display_data<=myCPU.U_rf.rf[reg_addr];//display register value
-            end
-           else if (sw_i[4]) begin
-	       dmem_addr<=sw_i[13:7];//display memory value
-               display_data<={myCPU.U_dmem.RAM[dmem_addr+3][7:0], myCPU.U_dmem.RAM[dmem_addr+2][7:0], 
-               myCPU.U_dmem.RAM[dmem_addr+1][7:0], myCPU.U_dmem.RAM[dmem_addr][7:0]};
-            end
-            else display_data<=`XLEN'b0;
-    end
+      else if (sw_i[3]) begin
+	  reg_addr<=sw_i[9:5];
+	  display_data<=myCPU.U_rf.rf[reg_addr];//display register value
+      end
+      else if (sw_i[4]) begin
+          dmem_addr<=sw_i[13:7];//display memory value
+          display_data<={myCPU.U_dmem.RAM[dmem_addr+3][7:0], myCPU.U_dmem.RAM[dmem_addr+2][7:0], 
+          myCPU.U_dmem.RAM[dmem_addr+1][7:0], myCPU.U_dmem.RAM[dmem_addr][7:0]};
+      end
+      else display_data<=`XLEN'b0;
+   end
 
     //display data
     seg7x16 u_seg7x16(
