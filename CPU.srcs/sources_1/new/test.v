@@ -30,6 +30,11 @@ module test(
 reg CLK;
 reg reset;
 
+initial begin
+	CLK=0;
+	reset=0;
+end
+	
 always @(*) begin
 	CLK=~CLK;
 	#50
