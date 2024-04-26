@@ -32,18 +32,32 @@ module test(
 reg CLK;
 reg reset;
 
-initial begin
-	CLK<=0;
-	reset<=0;
-end
-	
-always @(*) begin
-	CLK<=~CLK;
-	#50
-end
-
+integer counter = 0;
+ 
   //pipeline_CPU myCPU(.clk(CLK), .rstn(reset), .sw_i(sw_i[15:0]))
   pipeline_CPU myCPU(.clk(clk), .rstn(rstn), .sw_i(sw_i[15:0]));
+	
+initial begin
+      //$readmemh("riscv32_sim1.dat", myCPU.U_imem.RAM);
+      CLK = 1;
+      reset = 1;
+      #5 ;
+      reset = 0;
+end
+
+always begin
+	#(50) CLK = ~CLK;
+     
+	if (CLK == 1'b1) 
+      begin
+         counter = counter + 1;
+         // comment these four lines for online judge
+         //$display("clock: %d", counter);
+	      //$display("pc:\t\t%h", myCPU.pcF);
+         //$display("instr:\t%h", myCPU.instr);
+      end
+      
+   end //end always
 
   reg[`XLEN-1:0] display_data;
   reg[`RFIDX_WIDTH-1:0]  reg_addr;
