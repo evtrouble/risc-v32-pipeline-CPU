@@ -25,8 +25,6 @@ module pipeline_CPU(
     input clk,
     input rstn,
     input [15:0]sw_i,
-    output [7:0]disp_an_o,
-    output [7:0]disp_seg_o
 );
 
     reg[`ADDR_SIZE-1:0]pc;
