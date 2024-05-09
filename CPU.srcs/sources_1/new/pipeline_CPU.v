@@ -205,7 +205,7 @@ module pipeline_CPU(
         case(alusrca_ID)
             2'b00:  rd1_ID_EX <= rd1_ID;
             2'b01:  rd1_ID_EX <= pc_ID + 4;     //for jal, jalr
-            2'b10:  rd1_ID_EX <= pc_ID;         //for auipc
+            2'b11:  rd1_ID_EX <= pc_ID;         //for auipc
             default:rd1_ID_EX <= rd1_ID;
         endcase
         rd2_ID_EX       <= rd2_ID;
@@ -217,7 +217,7 @@ module pipeline_CPU(
         lwhb_ID_EX      <= lwhb_ID;           //for load type
         swhb_ID_EX      <= swhb_ID;           //for store type
         lunsigned_ID_EX <= lunsigned_ID;
-        rs1_ID_EX       <= (pcsrc_ID?5'b0:rs1_ID);      //for forwarding
+        rs1_ID_EX       <= (alusrca_ID[0]?5'b0:rs1_ID);      //for forwarding
         rs2_ID_EX       <= rs2_ID;
         rd_ID_EX        <= rd_ID;
    end
