@@ -104,7 +104,7 @@ module controller(
                   | ((rv32_blt | rv32_bltu) & lt) | ((rv32_bge | rv32_bgeu) & ~lt);//for jal, jalr, branch
 
 
-  assign alusrca = (rv32_jal || rv32_jalr) ? 2'b01 : (rv32_auipc ? 2'b10 : 2'b00);  
+  assign alusrca = (rv32_jal || rv32_jalr) ? 2'b01 : (rv32_auipc ? 2'b11 : 2'b00);  
 
   assign alusrc = rv32_lui || rv32_auipc ||  itype || stype;
 
