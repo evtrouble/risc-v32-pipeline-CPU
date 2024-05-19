@@ -1,4 +1,4 @@
-Course Design of Computer Composition and Design at Wuhan University on XILINX ARTIX-7 100T CSG324.  
+Course Design of Computer Composition and Design at Wuhan University on Nexys A7.  
 tool: vivado2018.3  
 Implemente forward and pause of data adventure and control adventure.  
 Implement instruction:   
