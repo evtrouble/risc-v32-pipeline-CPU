@@ -1,12 +1,11 @@
-Course Design of Computer Composition and Design at Wuhan University on Nexys A7.  
-tool: vivado2018.3  
-Implemente forward and pause of data adventure and control adventure.  
-Implement instruction:   
-R type: add, sub, or, xor, and, sll, srl, sra, slt, sltu  
-I type: addi, ori, xori, andi, slli, srli, srai, slti, sltiu, jalr,  
+基于Nexys A7的武汉大学计算机组成与设计课程设计，实现数据冒险和控制冒险的前递和冒泡    
+实现工具: vivado2018.3  
+实现指令:   
+R型: add, sub, or, xor, and, sll, srl, sra, slt, sltu  
+I型: addi, ori, xori, andi, slli, srli, srai, slti, sltiu, jalr,  
 lb, lbu, lh, lhu, lw   
-SB type: beq, bne, blt, bltu, bge, bgeu  
-S type: sb, sh, sw  
-J type: jal  
-U type: lui, auipc  
-Convert risc-v code to machine code: https://venus.kvakil.me/ 
+SB型: beq, bne, blt, bltu, bge, bgeu  
+S型: sb, sh, sw  
+J型: jal  
+U型: lui, auipc    
+p.s.将risc-v代码转换为机器代码: https://venus.kvakil.me/ 
